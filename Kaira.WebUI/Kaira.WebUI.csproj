@@ -18,7 +18,6 @@
     <Folder Include="Dtos\CollectionDtos\" />
     <Folder Include="Dtos\VideosDtos\" />
     <Folder Include="Dtos\TestimonialDtos\" />
-    <Folder Include="Dtos\ProductDtos\" />
   </ItemGroup>
 
 </Project>
