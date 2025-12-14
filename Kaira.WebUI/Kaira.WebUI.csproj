@@ -16,7 +16,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Dtos\VideosDtos\" />
-    <Folder Include="Dtos\TestimonialDtos\" />
     <Folder Include="ViewComponents\" />
     <Folder Include="Views\Shared\Components\" />
   </ItemGroup>
