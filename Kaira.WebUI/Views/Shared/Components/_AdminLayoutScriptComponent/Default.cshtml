@@ -1,0 +1,48 @@
+﻿@*
+    Admin Layout Script Comnponent
+*@
+
+<script src="/Spike-Bootstrap-1.0.0/src/assets/libs/jquery/dist/jquery.min.js"></script>
+
+
+<script src="/Spike-Bootstrap-1.0.0/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="/Spike-Bootstrap-1.0.0/src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+
+
+<script src="/Spike-Bootstrap-1.0.0/src/assets/js/sidebarmenu.js"></script>
+<script src="/Spike-Bootstrap-1.0.0/src/assets/js/app.min.js"></script>
+<script src="/Spike-Bootstrap-1.0.0/src/assets/libs/simplebar/dist/simplebar.js"></script>
+<script src="/Spike-Bootstrap-1.0.0/src/assets/js/dashboard.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+
+
+
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+<script>
+    function confirmDelete(urlWithId) {
+        Swal.fire({
+            title: "Silmek istediğinizden emin misiniz?",
+            text: "Bu işlem geri alınamaz!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet, Sil!",
+            cancelButtonText: "İptal"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = urlWithId;
+            }
+        });
+    }
+</script>
