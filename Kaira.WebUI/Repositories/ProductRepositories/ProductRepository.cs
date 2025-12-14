@@ -10,7 +10,7 @@ namespace Kaira.WebUI.Repositories.ProductRepositories
         private readonly IDbConnection _db = context.CreateConnection();
         public async Task CreateAsync(CreateProductDto dto)
         {
-            var query = "insert into Product (Name,ImageUrl,Desription,Price,CategoryId) values (@Name,@ImageUrl,@Desription,@Price,@CategoryId)";
+            var query = "insert into Products (Name,ImageUrl,Description,Price,CategoryId) values (@Name,@ImageUrl,@Description,@Price,@CategoryId)";
             var parameters = new DynamicParameters(dto);
             await _db.ExecuteAsync(query, parameters);
         }
@@ -31,15 +31,15 @@ namespace Kaira.WebUI.Repositories.ProductRepositories
 
         public async Task<UpdateProductDto> GetByIdAsync(int id)
         {
-            var query = "select * from Projects where ProjectId = @ProjectId";
+            var query = "select * from Products where ProductId=@ProductId";
             var parameters = new DynamicParameters();
-            parameters.Add("@ProjectId", id);
+            parameters.Add("@ProductId", id);
             return await _db.QueryFirstOrDefaultAsync<UpdateProductDto>(query, parameters);
         }
 
         public async Task UpdateAsync(UpdateProductDto dto)
         {
-            var query = "update product set name=@Name,imageurl=@ImageUrl,description=@Description,price=@Price,categoryId=@CategoryId where ProductId=@ProductId";
+            var query = "update Products set Name=@Name,ImageUrl=@ImageUrl,Description=@Description,Price=@Price,CategoryId=@CategoryId where ProductId=@ProductId";
             var parameters = new DynamicParameters(dto);
             await _db.ExecuteAsync(query, parameters);
         }

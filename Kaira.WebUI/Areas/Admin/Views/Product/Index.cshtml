@@ -1,39 +1,65 @@
-﻿
-@model IEnumerable<ResultProductDto>
+﻿@model IEnumerable<ResultProductDto>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
     int count = 0;
 }
 
-<h3>Ürünler</h3>
-<table class="table table-bordered table-hover">
-    <tr>
-        <th>#</th>
-        <th>Görsel</th>
-        <th>Ürün Adı</th>
-        <th>Açıklama</th>
-        <th>Fiyat</th>
-        <th>Kategori</th>
-        <th>İşlemler</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        count++;
-        <tr>
-            <th>@count</th>
-            <td>@item.ImageUrl</td>
-            <td>@item.Name</td>
-            <td>@item.Description</td>
-            <td>@item.Price</td>
-            <td>@item.CategoryName</td>
-            <td>
-                <a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a>
-                <a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-danger">Düzenle</a>
-            </td>
-        </tr>
-    }
-</table>
-<a href="/Admin/Product/CreateCategory" class="btn btn-primary">Kategori Oluştur</a>
+<div class="card admin-card">
 
+    <div class="admin-header d-flex justify-content-between align-items-center">
+        <h4 class="fw-bold mb-0">Ürün Listesi</h4>
+        <a href="/Admin/Product/CreateProduct/" class="btn btn-light text-dark fw-semibold">
+            <i class="bi bi-plus-circle me-1"></i> Yeni Ürün
+        </a>
+    </div>
 
+    <div class="admin-table">
+        <div class="table-responsive">
+            <table class="table table-borderless align-middle">
+                <thead class="fw-semibold text-secondary">
+                    <tr>
+                        <th>#</th>
+                        <th>Görsel</th>
+                        <th>Ürün Adı</th>
+                        <th>Açıklama</th>
+                        <th>Fiyat</th>
+                        <th>Kategori</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+
+                        <tr class="align-middle">
+                            <td><strong>@count</strong></td>
+
+                            <td><img src="@item.ImageUrl" style="height:75px; width:75px; border-radius:50%" /></td>
+                            <td>@item.Name</td>
+                            <td>@(item.Description.Length > 40 ? @item.Description.Substring(0,40) + "..." : item.Description) </td>
+                            <td>@item.Price</td>
+                            <td>@item.CategoryName</td>
+                            <td class="text-center">
+                                <button type="button" onclick="confirmDelete('/Admin/Product/DeleteProduct/@item.ProductId')" class="btn btn-danger btn-circle">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+
+                            <td class="text-center">
+                                <a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-primary btn-circle">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</div>

@@ -15,7 +15,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Dtos\CollectionDtos\" />
     <Folder Include="Dtos\VideosDtos\" />
     <Folder Include="Dtos\TestimonialDtos\" />
     <Folder Include="ViewComponents\" />
