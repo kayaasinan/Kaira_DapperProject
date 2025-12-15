@@ -1,0 +1,66 @@
+﻿
+@model IEnumerable<ResultVideoDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<div class="card admin-card">
+
+    <div class="admin-header d-flex justify-content-between align-items-center">
+        <h4 class="fw-bold mb-0">Site Galerisi</h4>
+        <a href="/Admin/Video/CreateVideo/" class="btn btn-light text-dark fw-semibold">
+            <i class="bi bi-plus-circle me-1"></i> Yeni Video
+        </a>
+    </div>
+
+    <div class="admin-table">
+        <div class="table-responsive">
+            <table class="table table-borderless align-middle">
+                <thead class="fw-semibold text-secondary">
+                    <tr>
+                        <th>#</th>
+                        <th>Url</th>
+                        <th>Arka Plan Görseli</th>
+                        <th class="text-center">İşlemler</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+
+                        <tr class="align-middle">
+                            <td><strong>@count</strong></td>
+
+                            <td>
+                                <iframe width="250" height="150" src="@item.Url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                                </iframe>
+                            </td>
+                            <td>@item.BackgroundImageUrl</td>
+                            <td class="text-center">
+                                <button type="button" onclick="confirmDelete('/Admin/Video/DeleteVideo/@item.VideoId')" class="btn btn-danger btn-circle">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+
+                            <td class="text-center">
+                                <a href="/Admin/Video/UpdateVideo/@item.VideoId" class="btn btn-primary btn-circle">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</div>
+
+

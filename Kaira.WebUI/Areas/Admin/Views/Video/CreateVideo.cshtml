@@ -1,0 +1,33 @@
+﻿@model CreateVideoDto
+@{
+    ViewData["Title"] = "CreateVideo";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Layout.cshtml";
+}
+
+}
+
+<div class="row">
+    <div class="col-lg-12 d-flex align-items-stretch">
+        <div class="card w-100">
+            <div class="card-body p-4">
+                <div class="d-flex mb-4 justify-content-between align-items-center">
+                    <h5 class="mb-0 fw-bold">Yeni Video Oluştur</h5>
+                </div>
+                <form method="post">
+                    <div class="form-group mb-3">
+                        <label>Video Linki</label>
+                        <input type="text" asp-for="Url" class="form-control" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label>Yorum</label>
+                        <input asp-for="BackgroundImageUrl" class="form-control" placeholder="Url Giriniz"/>
+                    </div>
+                    <button class="btn btn-info">Oluştur</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

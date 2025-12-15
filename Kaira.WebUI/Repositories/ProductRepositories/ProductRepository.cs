@@ -17,9 +17,9 @@ namespace Kaira.WebUI.Repositories.ProductRepositories
 
         public async Task DeleteAsync(int id)
         {
-            var query = "delete from Projects where ProjectId = @ProjectId";
+            var query = "delete from Products where ProductId = @ProductId";
             var parameters = new DynamicParameters();
-            parameters.Add("@ProjectId", id);
+            parameters.Add("@ProductId", id);
             await _db.ExecuteAsync(query, parameters);
         }
 
