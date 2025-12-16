@@ -144,12 +144,8 @@
                 </svg>
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                    aria-controls="offcanvasNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
             @await Component.InvokeAsync("_UILayoutNavbar")
+
 
         </div>
     </nav>
@@ -157,7 +153,7 @@
     @RenderBody()
 
     @await Component.InvokeAsync("_UILayoutFooter")
-    
+
     @await Component.InvokeAsync("_UILayoutScript")
 
 </body>
