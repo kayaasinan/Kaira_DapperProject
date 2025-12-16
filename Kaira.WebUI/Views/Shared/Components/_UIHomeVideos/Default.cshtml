@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ResultVideoDto>
+@*
+    UI Home Video Component
+*@
+<section class="video py-5 overflow-hidden">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="video-content open-up" data-aos="zoom-out">
+                    <div class="video-bg">
+                        <img src="@item.BackgroundImageUrl" alt="video" class="video-image img-fluid">
+                    </div>
+                    <div class="video-player">
+                        <a class="youtube" href="@item.Url">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <use xlink:href="#play"></use>
+                            </svg>
+                            <img src="~/kaira-1.0.0/images/text-pattern.png" alt="pattern" class="text-rotate">
+                        </a>
+                    </div>
+                </div>
+            }
+       
+        </div>
+    </div>
+</section>

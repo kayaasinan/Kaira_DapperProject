@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ResultProductDto>
+@*
+    UI Home Best Sellers
+*@
+<section id="best-sellers" class="best-sellers product-carousel py-5 position-relative overflow-hidden">
+    <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
+            <h4 class="text-uppercase">En Çok Satanlar</h4>
+            <a href="index.html" class="btn-link">Tüm Ürünlerimiz İçin Tıklayınız</a>
+        </div>
+        <div class="swiper product-swiper open-up" data-aos="zoom-out">
+            <div class="swiper-wrapper d-flex">
+                @foreach (var item in Model)
+                {
+                    <div class="swiper-slide">
+                        <div class="product-item image-zoom-effect link-effect">
+                            <div class="image-holder">
+                                <a href="index.html">
+                                    <img src="@item.ImageUrl" style="width:297px; height:397px;" alt="categories" class="product-image img-fluid">
+                                </a>
+                                <a href="index.html" class="btn-icon btn-wishlist">
+                                    <svg width="24" height="24" viewBox="0 0 24 24">
+                                        <use xlink:href="#heart"></use>
+                                    </svg>
+                                </a>
+                                <div class="product-content">
+                                    <h5 class="text-uppercase fs-5 mt-3">
+                                        <a href="index.html">@item.Name</a>
+                                    </h5>
+                                    <a href="index.html" class="text-decoration-none" data-after="Sepete Ekle"><span>₺@item.Price</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="icon-arrow icon-arrow-left">
+            <svg width="50" height="50" viewBox="0 0 24 24">
+                <use xlink:href="#arrow-left"></use>
+            </svg>
+        </div>
+        <div class="icon-arrow icon-arrow-right">
+            <svg width="50" height="50" viewBox="0 0 24 24">
+                <use xlink:href="#arrow-right"></use>
+            </svg>
+        </div>
+    </div>
+</section>
