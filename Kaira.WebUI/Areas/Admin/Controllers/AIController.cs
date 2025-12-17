@@ -1,9 +1,10 @@
-﻿using Kaira.WebUI.Repositories.OpenAIRepositories;
+﻿using Kaira.WebUI.Consts;
+using Kaira.WebUI.Repositories.OpenAIRepositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kaira.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(Roles.Admin)]
     public class AIController(IOpenAIRepository _openAIRepository) : Controller
     {
         public IActionResult Index()

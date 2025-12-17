@@ -1,4 +1,5 @@
-﻿using Kaira.WebUI.Dtos.ProductDtos;
+﻿using Kaira.WebUI.Consts;
+using Kaira.WebUI.Dtos.ProductDtos;
 using Kaira.WebUI.Repositories.CategoryRepositories;
 using Kaira.WebUI.Repositories.ProductRepositories;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +9,7 @@ using X.PagedList.Extensions;
 
 namespace Kaira.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(Roles.Admin)]
     public class ProductController(IProductRepository _productRepository,ICategoryReposiyory _categoryReposiyory) : Controller
     {
         private async Task GetCategoriesAsync()

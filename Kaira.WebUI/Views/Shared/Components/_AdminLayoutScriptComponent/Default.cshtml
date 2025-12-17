@@ -56,6 +56,7 @@
         const resultArea = document.getElementById("resultArea");
         const listeningInfo = document.getElementById("listeningInfo");
 
+      
         generateBtn.addEventListener("click", function () {
 
             const prompt = promptInput.value;
@@ -76,14 +77,19 @@
                 body: "prompt=" + encodeURIComponent(prompt)
             })
             .then(res => res.text())
-            .then(data => {
-                resultArea.innerHTML = data.replace(/\n/g, "<br>");
-            })
+               .then(data => {
+        resultArea.innerHTML = data.replace(/\n/g, "<br>");
+
+        const cleanSpeechText = data.replace(/^\d+\.\s*/gm, "");
+
+        speakText(cleanSpeechText);
+    })
             .catch(() => {
                 resultArea.innerHTML = "Bir hata oluştu.";
             });
         });
 
+     
         const SpeechRecognition =
             window.SpeechRecognition || window.webkitSpeechRecognition;
 
@@ -119,5 +125,40 @@
             setTimeout(() => listeningInfo.innerText = "", 1500);
         };
 
+
+          function speakText(text) {
+        if (!window.speechSynthesis) return;
+
+        const indicator = document.getElementById("speakingIndicator");
+
+        window.speechSynthesis.cancel();
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "tr-TR";
+        utterance.rate = 1;
+        utterance.pitch = 1;
+
+     
+        utterance.onstart = () => {
+            indicator.style.display = "block";
+        };
+
+     
+        utterance.onend = () => {
+            indicator.style.display = "none";
+        };
+
+   
+        utterance.onerror = () => {
+            indicator.style.display = "none";
+        };
+
+        window.speechSynthesis.speak(utterance);
+    }
+
+
     });
 </script>
+
+
+

@@ -7,47 +7,65 @@
 <div class="card admin-card">
 
     <div class="admin-header">
-        <h4 class="fw-bold mb-0">
-            🤖 AI Sesli Komut Kombin Asistanı
-        </h4>
+        <h4 class="fw-bold mb-0">🤖 AI Kombin Asistanı</h4>
     </div>
 
     <div class="admin-table">
 
-   
-        <div class="mb-4">
-            <label class="fw-semibold mb-2">
-                Kombin isteğinizi yazın veya mikrofon ile sesli komut sistemimizi kullanın... 
-            </label>
+      
+        <div class="mb-3">
+            <label class="fw-semibold mb-2">Kombin isteğinizi yazın veya konuşun</label>
 
             <textarea id="promptInput"
                       class="form-control"
                       rows="4"
                       placeholder="Örn: Kış için spor ama şık bir kombin"></textarea>
-        </div>
-        <div class="mt-2 d-flex gap-2 mb-3">
-            <button id="micBtn" class="btn btn-outline-secondary">
-                🎤 Konuş
-            </button>
-            <span id="listeningInfo" class="text-muted"></span>
+
+            <div class="mt-2 d-flex gap-2 align-items-center mb-3">
+                <button id="micBtn" class="btn btn-outline-secondary">
+                    🎤 Konuş
+                </button>
+                <span id="listeningInfo" class="text-muted"></span>
+            </div>
         </div>
 
-      
-        <button id="generateBtn"
-                class="btn btn-dark fw-semibold">
+        
+        <button id="generateBtn" class="btn btn-dark fw-semibold">
             Kombin Oluştur
         </button>
 
-     
+      
         <div id="resultArea"
              class="mt-4 p-3 border rounded"
              style="display:none;">
         </div>
-
+        <div id="speakingIndicator"
+             class="mt-2 fw-semibold text-primary"
+             style="display:none;">
+            🔊 AI konuşuyor...
+        </div>
     </div>
-
 </div>
 
+<style>
+    @@keyframes blink {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.3;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    #speakingIndicator {
+        animation: blink 1s infinite;
+    }
+</style>
 
 
 

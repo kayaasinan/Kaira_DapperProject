@@ -1,10 +1,11 @@
-﻿using Kaira.WebUI.Dtos.VideosDtos;
+﻿using Kaira.WebUI.Consts;
+using Kaira.WebUI.Dtos.VideosDtos;
 using Kaira.WebUI.Repositories.VideoRepositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kaira.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(Roles.Admin)]
     public class VideoController(IVideoRepository _videoRepository) : Controller
     {
         public async Task<IActionResult> Index()

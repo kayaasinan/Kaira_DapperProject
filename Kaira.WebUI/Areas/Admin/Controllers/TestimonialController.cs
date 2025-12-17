@@ -1,11 +1,12 @@
-﻿using Kaira.WebUI.Dtos.CategoryDtos;
+﻿using Kaira.WebUI.Consts;
+using Kaira.WebUI.Dtos.CategoryDtos;
 using Kaira.WebUI.Dtos.TestimonialDtos;
 using Kaira.WebUI.Repositories.TestimonialRepositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kaira.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(Roles.Admin)]
     public class TestimonialController(ITestimonialRepository _testimonialRepository) : Controller
     {
         public async Task<IActionResult> Index()

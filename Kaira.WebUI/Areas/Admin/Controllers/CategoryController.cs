@@ -1,4 +1,5 @@
-﻿using Kaira.WebUI.Dtos.CategoryDtos;
+﻿using Kaira.WebUI.Consts;
+using Kaira.WebUI.Dtos.CategoryDtos;
 using Kaira.WebUI.Repositories.CategoryRepositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -6,7 +7,7 @@ using X.PagedList.Extensions;
 
 namespace Kaira.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(Roles.Admin)]
     public class CategoryController(ICategoryReposiyory _categoryReposiyory) : Controller
     {
         public async Task<IActionResult> Index(int page = 1, int pageSize = 4)
