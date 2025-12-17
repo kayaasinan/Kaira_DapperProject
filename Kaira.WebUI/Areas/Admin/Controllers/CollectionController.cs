@@ -1,16 +1,18 @@
 ﻿using Kaira.WebUI.Dtos.CollectionDtos;
 using Kaira.WebUI.Repositories.CollectionRepositories;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList.Extensions;
 
 namespace Kaira.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class CollectionController(ICollectionRepository _collectionRepository) : Controller
     {
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 4)
         {
-            var categories = await _collectionRepository.GetAllAsync();
-            return View(categories);
+            var collections = await _collectionRepository.GetAllAsync();
+            var pagedList = collections.ToPagedList(page, pageSize);
+            return View(pagedList);
         }
         public IActionResult CreateCollection()
         {

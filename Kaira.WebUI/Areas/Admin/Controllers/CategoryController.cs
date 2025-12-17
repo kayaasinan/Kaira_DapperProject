@@ -2,16 +2,18 @@
 using Kaira.WebUI.Repositories.CategoryRepositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using X.PagedList.Extensions;
 
 namespace Kaira.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class CategoryController(ICategoryReposiyory _categoryReposiyory) : Controller
     {
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 4)
         {
             var categories = await _categoryReposiyory.GetAllAsync();
-            return View(categories);
+            var pagedList = categories.ToPagedList(page, pageSize);
+            return View(pagedList);
         }
         public IActionResult CreateCategory()
         {

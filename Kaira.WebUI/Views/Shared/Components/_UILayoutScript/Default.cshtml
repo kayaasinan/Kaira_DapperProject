@@ -10,3 +10,36 @@
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="~/kaira-1.0.0/js/script.min.js"></script>
+
+<script>
+    document.getElementById("aiModal").addEventListener("show.bs.modal", async function () {
+
+        const prompt = document.getElementById("promptInput").value;
+        const resultBox = document.getElementById("aiResult");
+
+        if (!prompt.trim()) {
+            resultBox.innerHTML = "<p class='text-danger'>Lütfen bir prompt giriniz.</p>";
+            return;
+        }
+
+        resultBox.innerHTML = "⏳ AI kombin hazırlanıyor...";
+
+        const formData = new FormData();
+        formData.append("prompt", prompt);
+
+        const response = await fetch("/Home/GenerateStyle", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.text();
+
+        resultBox.innerHTML = `
+            <div class="p-3">
+                <pre style="white-space: pre-wrap; font-family: inherit;">
+    ${data}
+                </pre>
+            </div>
+        `;
+    });
+</script>

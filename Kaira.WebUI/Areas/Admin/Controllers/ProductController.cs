@@ -4,6 +4,7 @@ using Kaira.WebUI.Repositories.ProductRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
+using X.PagedList.Extensions;
 
 namespace Kaira.WebUI.Areas.Admin.Controllers
 {
@@ -21,10 +22,11 @@ namespace Kaira.WebUI.Areas.Admin.Controllers
 
                                   }).ToList();
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page=1,int pageSize = 4)
         {
             var products = await _productRepository.GetAllAsync();
-            return View(products);
+            var pagedList = products.ToPagedList(page, pageSize);
+            return View(pagedList);
         }
         public async Task<IActionResult> CreateProduct()
         {

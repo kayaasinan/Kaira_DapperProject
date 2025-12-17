@@ -46,3 +46,78 @@
         });
     }
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const generateBtn = document.getElementById("generateBtn");
+        const micBtn = document.getElementById("micBtn");
+        const promptInput = document.getElementById("promptInput");
+        const resultArea = document.getElementById("resultArea");
+        const listeningInfo = document.getElementById("listeningInfo");
+
+        generateBtn.addEventListener("click", function () {
+
+            const prompt = promptInput.value;
+
+            if (!prompt) {
+                alert("Lütfen bir istek giriniz.");
+                return;
+            }
+
+            resultArea.style.display = "block";
+            resultArea.innerHTML = "🤖 AI düşünüyor...";
+
+            fetch("/Admin/AI/GenerateStyle", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: "prompt=" + encodeURIComponent(prompt)
+            })
+            .then(res => res.text())
+            .then(data => {
+                resultArea.innerHTML = data.replace(/\n/g, "<br>");
+            })
+            .catch(() => {
+                resultArea.innerHTML = "Bir hata oluştu.";
+            });
+        });
+
+        const SpeechRecognition =
+            window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        if (!SpeechRecognition) {
+            micBtn.disabled = true;
+            listeningInfo.innerText = "Tarayıcı sesli girişi desteklemiyor.";
+            return;
+        }
+
+        const recognition = new SpeechRecognition();
+        recognition.lang = "tr-TR";
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        micBtn.addEventListener("click", () => {
+            micBtn.disabled = true;
+            listeningInfo.innerText = "🎧 Dinleniyor...";
+            recognition.start();
+        });
+
+        recognition.onresult = (event) => {
+            const text = event.results[0][0].transcript;
+            promptInput.value = text;
+            listeningInfo.innerText = "✅ Metne çevrildi";
+        };
+
+        recognition.onerror = () => {
+            listeningInfo.innerText = "❌ Ses algılanamadı";
+        };
+
+        recognition.onend = () => {
+            micBtn.disabled = false;
+            setTimeout(() => listeningInfo.innerText = "", 1500);
+        };
+
+    });
+</script>

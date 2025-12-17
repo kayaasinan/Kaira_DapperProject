@@ -6,18 +6,41 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 py-5 my-5">
+
                 <div class="subscribe-header text-center pb-3">
                     <h3 class="section-title text-uppercase">
-                        Bültenimize Abone Olun
+                        Yapay Zeka ile Kombin Oluşturun
                     </h3>
                 </div>
-                <form id="form" class="d-flex flex-wrap gap-2">
-                    <input type="text" name="email" placeholder="E-posta Adresinizi Girin" class="form-control form-control-lg">
-                    <button class="btn btn-dark btn-lg text-uppercase w-100">
-                        Abone Ol
+
+                <div class="d-flex flex-wrap gap-2">
+                    <input type="text" id="promptInput" class="form-control form-control-lg" placeholder="Örn: Yazlık minimal erkek kombin" />
+
+                    <button type="button" class="btn btn-dark btn-lg text-uppercase w-100" data-bs-toggle="modal" data-bs-target="#aiModal">
+                        Oluştur
                     </button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="aiModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">🤖 AI Kombin Önerisi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="aiResult">
+                    <p class="text-muted">AI kombin hazırlanıyor...</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
