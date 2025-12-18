@@ -17,9 +17,11 @@ tek bir akışta birleştirir.
   Kullanıcı mikrofonla konuşur, tarayıcı konuşmayı metne çevirir.
 
 - 🤖 **Yapay Zeka Destekli Kombin Önerisi**  
-  OpenAI GPT-4o-mini modeli ile stil ve kombin önerileri oluşturulur.
+  Gemini 2.5 Flash modeli ile stil ve kombin önerileri oluşturulur.
 
-- 🔊 **Sesli Yapay Zeka Yanıtı (Text-to-Speech)**  
+- 🔊 **Sesli Yapay Zeka Yanıtı (Text-to-Speech)**
+
+  OpenAI GPT-4o-mini modeli ile stil ve kombin önerileri oluşturulur.
   Üretilen kombin önerisi tarayıcı üzerinden sesli olarak okunur.
 
 - ✨ **Canlı Konuşma Göstergesi**  
